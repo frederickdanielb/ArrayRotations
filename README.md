@@ -10,10 +10,13 @@ Rota un arreglo de dimensión dinámica(N), N veces a la izquierda:
 ____________________
 * node 6.2.2 o superior
 * nmp
+
 ### Instalación ###
 ____________________
 1. Descarga el repositorio o clonalo en tu equipo.
 2. Una vez descargado navegue hasta la raíz del proyecto **'$cd ArrayRotations'** , luego ejecute el comando **'$npm install'** y asi obtener los módulos necesarios para el correcto funcionamiento.
+
+
 ### Modo de Uso ###
 ____________________
 1. Debe posicionarse en la raíz del proyeco con la terminal de su preferencia.
