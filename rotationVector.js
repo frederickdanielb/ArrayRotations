@@ -46,15 +46,17 @@ const becual = {
     checkData: (stringData)=> {
         let arrayData = stringData.split(';');
         let sizeArray = arrayData[0];
-        let numberOfRotations = arrayData[1];
-        let msg = ' parametro en la cadena espera un número';
-        if (isNaN(sizeArray) && !isNaN(numberOfRotations)) {
-            return {error: true, msg: 'Primer' + msg};
-        } else if (!isNaN(sizeArray) && isNaN(numberOfRotations)) {
-            return {error: true, msg: 'Segundo' + msg};
-        } else if (isNaN(sizeArray) && isNaN(numberOfRotations)) {
-            return {error: true, msg: 'Primer y segundo' + msg};
-        } else if (arrayData[2] == undefined) {
+        if (arrayData.length>0) {
+            for (var i = arrayData.length - 1; i >= 0; i--) {
+                if (!Number.isInteger(parseInt(arrayData[i]))){
+                    return {
+                        error: true,
+                        msg: 'Todos los elementos de la cadena separados por punto y coma deben ser números enteros!'
+                    };
+                }
+            }
+        }
+        if (arrayData[2] == undefined) {
             return {
                 error: true,
                 msg: 'La cadena debe estra compuesta por 3 posiciones o más separadas por punto y coma!'
@@ -70,7 +72,6 @@ const becual = {
         }
         return {error: false};
     }
-
 }
 
 if (inputString.s == null) {
