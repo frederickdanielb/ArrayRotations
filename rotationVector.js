@@ -1,3 +1,7 @@
+let inputString = require('yargs')
+    .default({p: config.get('apiPort')})
+    .argv;
+
 let inputString = "5;4;2;7;9;3;8";
 let inputArray = inputString.split(';');
 let sizeVector = inputArray[0];
