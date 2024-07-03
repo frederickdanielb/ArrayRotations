@@ -1,50 +1,33 @@
-
-const array_data = ['one', 'two', 'three', 'four', 'five'];
-
-
+const arrayData = ['one', 'two', 'three', 'four', 'five'];
 
 /**
- * Method that applies left-to-right rotation to an array
+ * Rotates an array to the left a given number of times.
  * 
- * @method applyRotationLeftToRight
- * @param  {array} inputArray [input Array]
- * @param  {number} numberOfRotations [N rotations]
- * @return {array} array processed
+ * @param {array} array - The input array.
+ * @param {number} rotations - The number of rotations.
+ * @return {array} - The rotated array.
  */
-const applyRotationLeftToRight = (inputArray, numberOfRotations) => {
-  const copyOfInputArray = JSON.parse(JSON.stringify(inputArray))
-  for (var i = 0; i <= numberOfRotations; i++) {
-    if (i <= numberOfRotations - 1) {
-      let lastElement = copyOfInputArray.pop();
-      copyOfInputArray.unshift(lastElement);
-    } else {
-      return copyOfInputArray;
-    }
-
-  }
+const rotateLeft = (array, rotations) => {
+  if (!array.length || rotations <= 0) return array;
+  const len = array.length;
+  const normalizedRotations = rotations % len;
+  return array.slice(normalizedRotations).concat(array.slice(0, normalizedRotations));
 };
 
 /**
- * Method that applies right-to-left rotation to an array
+ * Rotates an array to the right a given number of times.
  * 
- * @method applyRotationRightToLeft
- * @param  {array} inputArray [input Array]
- * @param  {number} numberOfRotations [N rotations]
- * @return {array} array processed
+ * @param {array} array - The input array.
+ * @param {number} rotations - The number of rotations.
+ * @return {array} - The rotated array.
  */
-const applyRotationRightToLeft = (inputArray, numberOfRotations, direction) => {
-  const copyOfInputArray = JSON.parse(JSON.stringify(inputArray))
-  for (var i = 0; i <= numberOfRotations; i++) {
-    if (i <= numberOfRotations - 1) {
-      let firstElement = copyOfInputArray.shift();
-      copyOfInputArray.push(firstElement);
-    } else {
-      return copyOfInputArray;
-    }
-
-  }
+const rotateRight = (array, rotations) => {
+  if (!array.length || rotations <= 0) return array;
+  const len = array.length;
+  const normalizedRotations = rotations % len;
+  return array.slice(-normalizedRotations).concat(array.slice(0, -normalizedRotations));
 };
 
-console.log('Array original:', array_data);
-console.log('left-to-right rotation to an array:', applyRotationLeftToRight(array_data, 2));
-console.log('right-to-left rotation to an array:', applyRotationRightToLeft(array_data, 2));
+console.log('Original Array:', arrayData);
+console.log('Left Rotation:', rotateLeft(arrayData, 2));
+console.log('Right Rotation:', rotateRight(arrayData, 2));
